@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mapache Bigotón</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="barberia.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="barberia.html">
+                <img src="logo2.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                El Mapache Bigotón
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="barberia.html#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barberos.html">Barberos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gestion.html">Gestión de Citas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="citas.html">Agendar Cita</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold text-white" id="nombre-barberia">Barbería El Mapache Bigotón</h1>
+                    <p class="lead text-white" id="descripcion-barberia">Donde el estilo se encuentra con la tradición. Cortes clásicos y modernos para el hombre contemporáneo.</p>
+                    <a href="citas.html" class="btn btn-primary btn-lg mt-3">Reserva tu cita</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Servicios</h2>
+            <div class="row" id="servicios-container">
+            </div>
+        </div>
+    </section>
+
+    <!-- Barberos -->
+    <section id="barberos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Nuestros Barberos</h2>
+            <div class="row" id="barberos-container">
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+       <section id="galeria" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Galería</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="galeria.jpeg" class="img-fluid rounded shadow" alt="Galería 1">
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="galeria2.jpeg" class="img-fluid rounded shadow" alt="Galería 2">
+                </div>
+                <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="galeria3.jpeg" class="img-fluid rounded shadow" alt="Galería 3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5 id="footer-nombre">Barbería El Mapache Bigotón</h5>
+                    <p id="footer-descripcion">Donde el estilo se encuentra con la tradición.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Horario</h5>
+                    <p id="horario-texto">Lunes a Sábado: 9:00 AM - 7:00 PM<br>Domingo: 10:00 AM - 4:00 PM</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contacto</h5>
+                    <p id="contacto-info">📞 (123) 456-7890<br>📧 info@elmapachebigoton.com<br>📍 Calle Principal #123, Ciudad</p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0">&copy; 2025 <span id="anio-barberia">Barbería El Mapache Bigotón</span>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="barberia.js"></script>
+</body>
+</html>
