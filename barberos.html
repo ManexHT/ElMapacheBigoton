@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barberos - Barbería El Mapache Bigotón</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    <link rel="stylesheet" href="barberos.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="barberia.html">
+                <img src="logo2.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                El Mapache Bigotón
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="barberia.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="barberos.html">Barberos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria.html">Galería</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gestion.html">Gestión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="citas.html">
+                            <i class="fas fa-calendar-plus me-1"></i>Agendar Cita
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Nuestro Equipo de Barberos</h1>
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">
+                        Conoce a nuestros expertos barberos, profesionales certificados con años de experiencia en el
+                        arte de la barbería
+                    </p>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <a href="#barberos" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-users me-2"></i>Conocer Barberos
+                        </a>
+                        <a href="citas.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calendar me-2"></i>Reservar Cita
+                        </a>
+                        <button class="btn btn-success btn-lg ms-3" onclick="abrirModalCrear()">
+                            <i class="fas fa-user-plus me-2"></i>Agregar Barbero
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin-panel" class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0"><i class="fas fa-cog me-2"></i>Gestión de Barberos</h4>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm me-2" onclick="recargarBarberos()">
+                                <i class="fas fa-sync-alt me-1"></i>Actualizar
+                            </button>
+                            <button class="btn btn-success btn-sm" onclick="abrirModalCrear()">
+                                <i class="fas fa-user-plus me-1"></i>Nuevo Barbero
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4" data-aos="fade-up">
+                    <div class="stat-card">
+                        <i class="fas fa-users fa-3x text-primary mb-3"></i>
+                        <h3 id="total-barberos">0</h3>
+                        <p class="text-muted">Barberos Activos</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-card">
+                        <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                        <h3 id="experiencia-promedio">0</h3>
+                        <p class="text-muted">Años de Experiencia</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-card">
+                        <i class="fas fa-calendar-check fa-3x text-success mb-3"></i>
+                        <h3 id="citas-totales">0</h3>
+                        <p class="text-muted">Citas Mensuales</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-card">
+                        <i class="fas fa-award fa-3x text-info mb-3"></i>
+                        <h3 id="especialidades">0</h3>
+                        <p class="text-muted">Especialidades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="barberos" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-3" data-aos="fade-up">Nuestro Equipo de Expertos</h2>
+                    <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">
+                        Profesionales apasionados por el arte de la barbería tradicional y moderna
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <input type="text" id="buscarBarbero" class="form-control"
+                            placeholder="Buscar barberos por nombre o especialidad...">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex gap-2">
+                        <select id="filtroEspecialidad" class="form-select">
+                            <option value="">Todas las especialidades</option>
+                            <option value="corte">Corte Clásico</option>
+                            <option value="barba">Arreglo de Barba</option>
+                            <option value="navaja">Afeitado con Navaja</option>
+                            <option value="moderno">Corte Moderno</option>
+                            <option value="color">Tinte y Color</option>
+                        </select>
+                        <button class="btn btn-outline-secondary" onclick="limpiarFiltros()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span id="contadorBarberos" class="badge bg-primary fs-6">Cargando barberos...</span>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-primary btn-sm active" onclick="cambiarVista('grid')">
+                                <i class="fas fa-th"></i> Grid
+                            </button>
+                            <button class="btn btn-outline-primary btn-sm" onclick="cambiarVista('list')">
+                                <i class="fas fa-list"></i> Lista
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="barberos-grid" class="row g-4">
+            </div>
+
+            <div id="sin-barberos" class="text-center py-5 d-none">
+                <i class="fas fa-user-slash fa-3x text-muted mb-3"></i>
+                <h4 class="text-muted">No hay barberos registrados</h4>
+                <p class="text-muted">Agrega nuevos barberos para comenzar</p>
+                <button class="btn btn-primary" onclick="abrirModalCrear()">
+                    <i class="fas fa-user-plus me-2"></i>Agregar Primer Barbero
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="display-5 fw-bold mb-3">Especialidades</h2>
+                    <p class="lead text-muted">Cada barbero tiene su propia especialidad y estilo único</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="specialty-card text-center">
+                        <i class="fas fa-cut fa-3x text-primary mb-3"></i>
+                        <h4>Corte Clásico</h4>
+                        <p class="text-muted">Técnicas tradicionales y cortes atemporales</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="specialty-card text-center">
+                        <i class="fas fa-air-freshener fa-3x text-success mb-3"></i>
+                        <h4>Arreglo de Barba</h4>
+                        <p class="text-muted">Perfilado y cuidado especializado de barbas</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="specialty-card text-center">
+                        <i class="fas fa-scissors fa-3x text-warning mb-3"></i>
+                        <h4>Afeitado con Navaja</h4>
+                        <p class="text-muted">Técnica tradicional con navaja straight razor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="crearBarberoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitulo">Agregar Nuevo Barbero</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formBarbero">
+                        <input type="hidden" id="barberoId">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="nombre" class="form-label">Nombre Completo *</label>
+                                    <input type="text" class="form-control" id="nombre" required
+                                        placeholder="Ej: Carlos Mendoza">
+                                    <div class="invalid-feedback">Por favor ingresa el nombre del barbero</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="especialidad" class="form-label">Especialidad Principal *</label>
+                                    <select class="form-select" id="especialidad" required>
+                                        <option value="" selected disabled>Selecciona una especialidad</option>
+                                        <option value="Corte Clásico">Corte Clásico</option>
+                                        <option value="Corte Moderno">Corte Moderno</option>
+                                        <option value="Arreglo de Barba">Arreglo de Barba</option>
+                                        <option value="Afeitado con Navaja">Afeitado con Navaja</option>
+                                        <option value="Tinte y Color">Tinte y Color</option>
+                                        <option value="Tratamientos Capilares">Tratamientos Capilares</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="experiencia" class="form-label">Años de Experiencia *</label>
+                                    <input type="number" class="form-control" id="experiencia" required min="0" max="50"
+                                        placeholder="5">
+                                    <div class="invalid-feedback">Por favor ingresa los años de experiencia</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="edad" class="form-label">Edad</label>
+                                    <input type="number" class="form-control" id="edad" min="18" max="70"
+                                        placeholder="30">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control" id="telefono" placeholder="123-456-7890">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción y Habilidades</label>
+                            <textarea class="form-control" id="descripcion" rows="3"
+                                placeholder="Describe las habilidades, certificaciones y estilo del barbero..."></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="horario" class="form-label">Horario de Trabajo</label>
+                            <select class="form-select" id="horario">
+                                <option value="" selected>Horario general</option>
+                                <option value="matutino">Turno Matutino (9:00 AM - 2:00 PM)</option>
+                                <option value="vespertino">Turno Vespertino (2:00 PM - 7:00 PM)</option>
+                                <option value="completo">Tiempo Completo (9:00 AM - 7:00 PM)</option>
+                            </select>
+                        </div>
+
+                        <!-- Imagen -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="fotoInput" class="form-label">Foto del Barbero</label>
+                                    <input type="file" class="form-control" id="fotoInput" accept="image/*">
+                                    <div class="form-text">Formatos aceptados: JPG, PNG, GIF. Máx. 2MB</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Vista Previa</label>
+                                    <div id="fotoPreview" class="border rounded p-2 text-center" style="height: 120px;">
+                                        <span class="text-muted">No hay imagen seleccionada</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email"
+                                        placeholder="barbero@ejemplo.com">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="activo" checked>
+                            <label class="form-check-label" for="activo">
+                                Barbero activo y disponible
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarBarbero">
+                        <i class="fas fa-save me-2"></i>Guardar Barbero
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Barbería El Mapache Bigotón</h5>
+                    <p>Donde el estilo se encuentra con la tradición.</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Horario</h5>
+                    <p>Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+                    <p>Domingo: 10:00 AM - 4:00 PM</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-phone me-2"></i>(123) 456-7890</p>
+                    <p><i class="fas fa-envelope me-2"></i>info@elmapachebigoton.com</p>
+                    <p><i class="fas fa-map-marker-alt me-2"></i>Calle Principal #123, Ciudad</p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center mb-0">&copy; 2025 Barbería El Mapache Bigotón. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="barberos.js"></script>
+</body>
+
+</html>

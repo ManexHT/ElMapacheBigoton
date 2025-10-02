@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas - Barbería El Mapache Bigotón</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="gestion.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="barberia.html">
+                <img src="logo2.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
+                El Mapache Bigotón
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="barberia.html#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="servicios.html">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barberos.html">Barberos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gestion.html">Gestión de Citas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="citas.html">Agendar Cita</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Gestión de Citas</h1>
+        
+        <!-- Filtros -->
+        <div class="filter-section mb-4">
+            <h4><i class="fas fa-filter me-2"></i>Filtros</h4>
+            <div class="row">
+                <div class="col-md-3 mb-2">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha">
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label for="barbero" class="form-label">Barbero</label>
+                    <select class="form-select" id="barbero">
+                        <option value="">Todos los barberos</option>
+                        <option value="1">Carlos Mendoza</option>
+                        <option value="2">Javier López</option>
+                        <option value="3">Miguel Ángel</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label for="estado" class="form-label">Estado</label>
+                    <select class="form-select" id="estado">
+                        <option value="">Todos los estados</option>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="confirmada">Confirmada</option>
+                        <option value="completada">Completada</option>
+                        <option value="cancelada">Cancelada</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-2 d-flex align-items-end">
+                    <button class="btn btn-primary w-100" id="aplicarFiltros">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla de Citas -->
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-calendar-alt me-2"></i>Citas Programadas</h5>
+                <span class="badge bg-light text-primary" id="contadorCitas">5 citas</span>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="tablaCitas">
+                        <thead>
+                            <tr>
+                                <th>Cliente</th>
+                                <th>Servicio</th>
+                                <th>Barbero</th>
+                                <th>Fecha y Hora</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan Pérez</td>
+                                <td>Corte de Cabello</td>
+                                <td>Carlos Mendoza</td>
+                                <td>15/09/2025 10:00 AM</td>
+                                <td><span class="badge bg-warning status-badge">Pendiente</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success action-btn" data-bs-toggle="tooltip" title="Confirmar">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-info action-btn" data-bs-toggle="tooltip" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="tooltip" title="Cancelar">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>María García</td>
+                                <td>Corte + Barba</td>
+                                <td>Javier López</td>
+                                <td>15/09/2025 11:30 AM</td>
+                                <td><span class="badge bg-success status-badge">Confirmada</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary action-btn" data-bs-toggle="tooltip" title="Completar">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-info action-btn" data-bs-toggle="tooltip" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="tooltip" title="Cancelar">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Roberto Sánchez</td>
+                                <td>Arreglo de Barba</td>
+                                <td>Miguel Ángel</td>
+                                <td>15/09/2025 2:00 PM</td>
+                                <td><span class="badge bg-secondary status-badge">Completada</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-info action-btn" data-bs-toggle="tooltip" title="Ver detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Carlos López</td>
+                                <td>Corte de Cabello</td>
+                                <td>Carlos Mendoza</td>
+                                <td>16/09/2025 9:00 AM</td>
+                                <td><span class="badge bg-warning status-badge">Pendiente</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-success action-btn" data-bs-toggle="tooltip" title="Confirmar">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-info action-btn" data-bs-toggle="tooltip" title="Editar">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger action-btn" data-bs-toggle="tooltip" title="Cancelar">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ana Martínez</td>
+                                <td>Corte + Barba</td>
+                                <td>Javier López</td>
+                                <td>16/09/2025 4:30 PM</td>
+                                <td><span class="badge bg-danger status-badge">Cancelada</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-info action-btn" data-bs-toggle="tooltip" title="Ver detalles">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar cita -->
+    <div class="modal fade" id="editarCitaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Cita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditarCita">
+                        <div class="mb-3">
+                            <label for="cliente" class="form-label">Cliente</label>
+                            <input type="text" class="form-control" id="cliente" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="servicio" class="form-label">Servicio</label>
+                            <select class="form-select" id="servicio" required>
+                                <option value="">Seleccionar servicio</option>
+                                <option value="corte">Corte de Cabello</option>
+                                <option value="barba">Arreglo de Barba</option>
+                                <option value="combo">Corte + Barba</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="barberoModal" class="form-label">Barbero</label>
+                            <select class="form-select" id="barberoModal" required>
+                                <option value="">Seleccionar barbero</option>
+                                <option value="1">Carlos Mendoza</option>
+                                <option value="2">Javier López</option>
+                                <option value="3">Miguel Ángel</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaModal" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fechaModal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="horaModal" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="horaModal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estadoModal" class="form-label">Estado</label>
+                            <select class="form-select" id="estadoModal" required>
+                                <option value="pendiente">Pendiente</option>
+                                <option value="confirmada">Confirmada</option>
+                                <option value="completada">Completada</option>
+                                <option value="cancelada">Cancelada</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="guardarCambios">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="gestion.js"></script>
+</body>
+</html>
